@@ -42,10 +42,10 @@
     </div>
 
     <script>
-        // CONFIGURACIÓN DE SUPABASE (Reemplaza con tus datos reales)
-        const SUPABASE_URL = "https://vsnandukvuykrhqzdmsq.supabase.co";
+        // CONFIGURACIÓN DE SUPABASE
+        const SUPABASE_URL = "https://vsnandukvuykrhqdmsq.supabase.co";
         const SUPABASE_KEY = "sb_publishable_2sXTK3jkw5zomUxxDEs_aw_6ovzdl1Y";
-        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        const dbClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         async function bloquearFechas() {
             const unit = document.getElementById('unit').value;
@@ -58,7 +58,7 @@
                 return;
             }
 
-            const { data, error } = await supabase
+            const { data, error } = await dbClient
                 .from('blocked_dates')
                 .insert([{ unit, start_date, end_date, source: 'manual' }]);
 
