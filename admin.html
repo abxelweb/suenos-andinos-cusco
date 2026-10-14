@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración - Sueños Andinos Cusco</title>
-    <!-- Incluir Supabase JS -->
+    <!-- SDK OFICIAL DE SUPABASE -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         body { font-family: Arial, sans-serif; background: #121212; color: #fff; padding: 20px; max-width: 600px; margin: auto; }
@@ -64,15 +64,15 @@
                     .insert([{ unit, start_date, end_date, source: 'manual' }]);
 
                 if (error) {
-                    console.error("Detalle del error de Supabase:", error);
+                    console.error("Error de Supabase:", error);
                     alert("Error al bloquear: " + error.message);
                 } else {
                     msg.textContent = "¡Fechas bloqueadas con éxito en tiempo real!";
                     setTimeout(() => msg.textContent = "", 4000);
                 }
             } catch (err) {
-                console.error("Error crítico de red (fetch):", err);
-                alert("Error de red: No se pudo conectar con Supabase. Revisa la consola (F12).");
+                console.error("Error de red:", err);
+                alert("Error de red al conectar con Supabase.");
             }
         }
     </script>
