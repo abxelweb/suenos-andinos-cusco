@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Sueños Andinos Cusco</title>
+    <!-- Incluir Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body { font-family: Arial, sans-serif; background: #121212; color: #fff; padding: 20px; max-width: 600px; margin: auto; }
+        .card { background: #1e1e1e; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); margin-bottom: 20px; }
+        input, select, button { width: 100%; padding: 10px; margin-top: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #444; background: #2a2a2a; color: #fff; }
+        button { background: #d4af37; color: #000; font-weight: bold; cursor: pointer; border: none; }
+        button:hover { background: #c59b27; }
+        .success { color: #4caf50; font-weight: bold; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Panel de Control - Bloqueo Manual</h2>
+        <p>Bloquea fechas al instante para evitar overbookings.</p>
+        
+        <label for="unit">Unidad / Habitación:</label>
+        <select id="unit">
+            <option value="chaska">Habitación 1 - Chaska</option>
+            <option value="killa">Habitación 2 - Killa</option>
+            <option value="inti">Habitación 3 - Inti</option>
+            <option value="qori">Habitación 4 - Qori</option>
+            <option value="apu">Habitación 5 - Apu</option>
+            <option value="sumaq">Habitación 6 - Sumaq</option>
+        </select>
+
+        <label for="startDate">Fecha de Inicio (Check-in):</label>
+        <input type="date" id="startDate">
+
+        <label for="endDate">Fecha de Salida (Check-out):</label>
+        <input type="date" id="endDate">
+
+        <button onclick="bloquearFechas()">Bloquear Fechas al Instante</button>
+        <p id="msg" class="success"></p>
+    </div>
+
+    <script>
+        // CONFIGURACIÓN DE SUPABASE (Reemplaza con tus datos reales)
+        const SUPABASE_URL = "https://vsnandukvuykrhqzdmsq.supabase.co";
+        const SUPABASE_KEY = "sb_publishable_2sXTK3jkw5zomUxxDEs_aw_6ovzdl1Y";
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        async function bloquearFechas() {
+            const unit = document.getElementById('unit').value;
+            const start_date = document.getElementById('startDate').value;
+            const end_date = document.getElementById('endDate').value;
+            const msg = document.getElementById('msg');
+
+            if (!start_date || !end_date) {
+                alert("Por favor selecciona ambas fechas.");
+                return;
+            }
+
+            const { data, error } = await supabase
+                .from('blocked_dates')
+                .insert([{ unit, start_date, end_date, source: 'manual' }]);
+
+            if (error) {
+                alert("Error al bloquear: " + error.message);
+            } else {
+                msg.textContent = "¡Fechas bloqueadas con éxito en tiempo real!";
+                setTimeout(() => msg.textContent = "", 4000);
+            }
+        }
+    </script>
+</body>
+</html>
