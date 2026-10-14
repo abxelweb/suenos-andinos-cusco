@@ -58,15 +58,21 @@
                 return;
             }
 
-            const { data, error } = await dbClient
-                .from('blocked_dates')
-                .insert([{ unit, start_date, end_date, source: 'manual' }]);
+            try {
+                const { data, error } = await dbClient
+                    .from('blocked_dates')
+                    .insert([{ unit, start_date, end_date, source: 'manual' }]);
 
-            if (error) {
-                alert("Error al bloquear: " + error.message);
-            } else {
-                msg.textContent = "¡Fechas bloqueadas con éxito en tiempo real!";
-                setTimeout(() => msg.textContent = "", 4000);
+                if (error) {
+                    console.error("Detalle del error de Supabase:", error);
+                    alert("Error al bloquear: " + error.message);
+                } else {
+                    msg.textContent = "¡Fechas bloqueadas con éxito en tiempo real!";
+                    setTimeout(() => msg.textContent = "", 4000);
+                }
+            } catch (err) {
+                console.error("Error crítico de red (fetch):", err);
+                alert("Error de red: No se pudo conectar con Supabase. Revisa la consola (F12).");
             }
         }
     </script>
