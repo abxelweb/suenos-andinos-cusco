@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración - Sueños Andinos Cusco</title>
-    <!-- SDK OFICIAL DE SUPABASE -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         body { font-family: Arial, sans-serif; background: #121212; color: #fff; padding: 20px; max-width: 600px; margin: auto; }
         .card { background: #1e1e1e; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); margin-bottom: 20px; }
@@ -42,10 +40,8 @@
     </div>
 
     <script>
-        // CONFIGURACIÓN DE SUPABASE
         const SUPABASE_URL = "https://vsnandukvuykrhqdmsq.supabase.co";
         const SUPABASE_KEY = "sb_publishable_2sXTK3jkw5zomUxxDEs_aw_6ovzdl1Y";
-        const dbClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         async function bloquearFechas() {
             const unit = document.getElementById('unit').value;
@@ -59,20 +55,27 @@
             }
 
             try {
-                const { data, error } = await dbClient
-                    .from('blocked_dates')
-                    .insert([{ unit, start_date, end_date, source: 'manual' }]);
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/blocked_dates`, {
+                    method: 'POST',
+                    headers: {
+                        'apikey': SUPABASE_KEY,
+                        'Authorization': `Bearer ${SUPABASE_KEY}`,
+                        'Content-Type': 'application/json',
+                        'Prefer': 'return=minimal'
+                    },
+                    body: JSON.stringify({ unit, start_date, end_date, source: 'manual' })
+                });
 
-                if (error) {
-                    console.error("Error de Supabase:", error);
-                    alert("Error al bloquear: " + error.message);
-                } else {
-                    msg.textContent = "¡Fechas bloqueadas con éxito en tiempo real!";
-                    setTimeout(() => msg.textContent = "", 4000);
+                if (!response.ok) {
+                    const errData = await response.text();
+                    throw new Error(errData || "Error en el servidor de base de datos");
                 }
+
+                msg.textContent = "¡Fechas bloqueadas con éxito en tiempo real!";
+                setTimeout(() => msg.textContent = "", 4000);
             } catch (err) {
-                console.error("Error de red:", err);
-                alert("Error de red al conectar con Supabase.");
+                console.error("Error:", err);
+                alert("Error al bloquear: " + err.message);
             }
         }
     </script>
