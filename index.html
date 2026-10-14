@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sueños Andinos Cusco – Alojamiento en los Andes | Sitio Oficial</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- SDK OFICIAL DE PAYPAL (CON TU CLIENT ID) -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AQdTSY0JfULxKCi53oOFAcWp2lEWBxZ2C-3-8m4S_aX4j1j9m&currency=USD"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        inca: {
+                            gold: '#D4AF37',
+                            darkGold: '#AA8828',
+                            earth: '#2C1D11',
+                            cream: '#FAF7F2',
+                            sand: '#F2EBDC',
+                            dark: '#1C1917',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .backdrop-blur-md { backdrop-filter: blur(12px); }
+        .bg-pattern {
+            background-image: radial-gradient(#D4AF37 0.75px, transparent 0.75px);
+            background-size: 24px 24px;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #AA8828 100%);
+        }
+    </style>
+</head>
+<body class="bg-inca-cream text-inca-dark font-sans selection:bg-inca-gold selection:text-white antialiased">
+
+    <!-- BARRA SUPERIOR -->
+    <div class="bg-inca-earth text-inca-sand text-xs py-2.5 px-4 border-b border-inca-gold/30">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-6">
+                <a href="https://wa.me/51967054134" target="_blank" class="flex items-center gap-1.5 hover:text-inca-gold transition">
+                    <i data-lucide="phone" class="w-3.5 h-3.5 text-inca-gold"></i>
+                    <span class="font-medium">+51 967 054 134</span>
+                </a>
+                <a href="mailto:suenosandinoscusco@gmail.com" class="flex items-center gap-1.5 hover:text-inca-gold transition">
+                    <i data-lucide="mail" class="w-3.5 h-3.5 text-inca-gold"></i>
+                    <span>suenosandinoscusco@gmail.com</span>
+                </a>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="flex items-center gap-1">
+                    <i data-lucide="clock" class="w-3.5 h-3.5 text-inca-gold"></i> Check-in: 2:00 PM | Check-out: 10:00 AM
+                </span>
+                <span class="hidden md:inline text-inca-gold">•</span>
+                <span class="font-semibold text-inca-gold">Estadía Mínima: 2 Noches</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="sticky top-0 z-40 bg-inca-dark/95 backdrop-blur-md text-white border-b border-inca-gold/20 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-inca-gold/10 border border-inca-gold flex items-center justify-center shadow-inner">
+                    <i data-lucide="mountain" class="w-6 h-6 text-inca-gold"></i>
+                </div>
+                <div>
+                    <span class="font-serif text-xl sm:text-2xl font-bold tracking-wide text-white block leading-none">SUEÑOS ANDINOS</span>
+                    <span class="text-[10px] tracking-[0.25em] text-inca-gold uppercase font-semibold">Cusco • Alojamiento</span>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex items-center gap-8 font-medium text-sm text-inca-sand">
+                <a href="#alojamientos" class="hover:text-inca-gold transition">Alojamientos</a>
+                <a href="#motor-reservas" class="hover:text-inca-gold transition">Reservas</a>
+                <a href="#normas" class="hover:text-inca-gold transition">Normas</a>
+                <a href="#ubicacion" class="hover:text-inca-gold transition">Ubicación</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <a href="#motor-reservas" class="gold-gradient text-inca-dark font-extrabold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider transition hover:brightness-110 shadow-lg flex items-center gap-2">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    <span>Ver Disponibilidad</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-[85vh] flex items-center justify-center bg-inca-dark overflow-hidden py-16">
+        <div class="absolute inset-0 z-0 opacity-40">
+            <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&q=80&w=2000" alt="Cusco Vista Panorámica" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-inca-dark via-inca-dark/70 to-transparent"></div>
+
+        <div class="relative z-10 max-w-5xl mx-auto text-center px-4">
+            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-inca-gold/15 border border-inca-gold/40 text-inca-gold text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-md">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> 6 Unidades Exclusivas en Cusco
+            </span>
+
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                Donde la Magia de los Andes <br><span class="text-inca-gold italic font-normal">Se Siente como en Casa</span>
+            </h1>
+
+            <p class="text-base sm:text-xl text-inca-sand/90 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
+                Habitaciones privadas en el 5to piso con desayuno buffet incluido y departamentos amoblados de hasta 6 personas. Entradas digitales, WiFi de alta velocidad y terraza azotea con parrilla.
+            </p>
+
+            <!-- BUSCADOR RÁPIDO EN HERO -->
+            <div class="bg-white/95 backdrop-blur-md p-4 sm:p-6 rounded-3xl shadow-2xl text-inca-dark max-w-4xl mx-auto border border-inca-gold/40">
+                <form id="hero-search-form" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end text-left">
+                    <div>
+                        <label class="block text-xs font-bold text-inca-earth uppercase tracking-wider mb-1">Check-in</label>
+                        <input type="date" id="hero-checkin" class="w-full p-3 border border-gray-300 rounded-xl text-sm font-medium focus:ring-2 focus:ring-inca-gold outline-none" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-inca-earth uppercase tracking-wider mb-1">Check-out</label>
+                        <input type="date" id="hero-checkout" class="w-full p-3 border border-gray-300 rounded-xl text-sm font-medium focus:ring-2 focus:ring-inca-gold outline-none" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-inca-earth uppercase tracking-wider mb-1">Huéspedes Totales</label>
+                        <select id="hero-guests" class="w-full p-3 border border-gray-300 rounded-xl text-sm font-medium focus:ring-2 focus:ring-inca-gold outline-none">
+                            <option value="1">1 Persona</option>
+                            <option value="2" selected>2 Personas</option>
+                            <option value="3">3 Personas</option>
+                            <option value="4">4 Personas</option>
+                            <option value="5">5 Personas</option>
+                            <option value="6">6 Personas</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full gold-gradient text-inca-dark font-extrabold p-3.5 rounded-xl text-sm transition flex items-center justify-center gap-2 shadow-lg hover:brightness-105">
+                            <i data-lucide="search" class="w-4 h-4"></i>
+                            <span>Consultar Espacio</span>
+                        </button>
+                    </div>
+                </form>
+                <p class="text-[11px] text-gray-500 mt-2 text-center">* Mínimo 2 noches de estadía. Confirmación inmediata sin comisiones.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ALOJAMIENTOS / CATÁLOGO COMPLETO -->
+    <section id="alojamientos" class="py-24 px-4 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs font-bold uppercase tracking-widest text-inca-gold">Nuestras 6 Unidades Independientes</span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-inca-dark mt-2">Nuestros Alojamientos</h2>
+            <div class="w-20 h-1 bg-inca-gold mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="flex justify-center gap-3 mb-12 flex-wrap">
+            <button onclick="filterRooms('all')" class="room-filter-btn active gold-gradient text-inca-dark font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider shadow-md">Todos (6)</button>
+            <button onclick="filterRooms('habitacion')" class="room-filter-btn bg-white text-inca-dark hover:bg-inca-sand font-semibold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider border border-gray-200">Habitaciones Privadas - 5° Piso (4)</button>
+            <button onclick="filterRooms('departamento')" class="room-filter-btn bg-white text-inca-dark hover:bg-inca-sand font-semibold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider border border-gray-200">Departamentos Amoblados (2)</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="rooms-grid">
+
+            <!-- Habitación 1: Chaska -->
+            <div class="room-card habitacion bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 flex flex-col hover:shadow-2xl transition duration-300">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=80&w=800" alt="Chaska" class="w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 bg-inca-dark/90 backdrop-blur-md text-inca-gold text-xs font-bold px-3 py-1 rounded-full border border-inca-gold/30">Piso 5 • Cama Queen</span>
+                    <span class="absolute bottom-4 right-4 bg-inca-gold text-inca-dark font-extrabold px-3.5 py-1.5 rounded-xl text-sm shadow-md">S/120 <span class="text-xs font-normal">/ noche</span></span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-2xl font-bold text-inca-dark">Habitación 1 – Chaska</h3>
+                            <span class="text-[10px] font-bold text-green-800 bg-green-100 px-2.5 py-1 rounded-md">Desayuno Incluido</span>
+                        </div>
+                        <p class="text-gray-600 text-xs mb-4 leading-relaxed">Habitación privada con iluminación natural, cama Queen y acceso a la azotea con parrilla.</p>
+                        <div class="grid grid-cols-2 gap-2 text-xs text-gray-700 mb-6 bg-inca-sand/40 p-3 rounded-xl border border-inca-sand">
+                            <div class="flex items-center gap-1.5"><i data-lucide="users" class="w-3.5 h-3.5 text-inca-gold"></i> 1 - 2 Personas</div>
+                            <div class="flex items-center gap-1.5"><i data-lucide="wifi" class="w-3.5 h-3.5 text-inca-gold"></i> WiFi Gratis</div>
+                            <div class="flex items-center gap-1.5"><i data-lucide="bath" class="w-3.5 h-3.5 text-inca-gold"></i> Baño Privado</div>
+                            <div class="flex items-center gap-1.5"><i data-lucide="coffee" class="w-3.5 h-3.5 text-inca-gold"></i> Buffet Incluido</div>
+                        </div>
+                    </div>
+                    <button onclick="selectRoom('chaska')" class="w-full bg-inca-earth hover:bg-inca-dark text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
+                        <span>Reservar Chaska</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Habitación 2: Killa -->
+            <div class="room-card habitacion bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 flex flex-col hover:shadow-2xl transition duration-300">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80&w=800" alt="Killa" class="w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 bg-inca-dark/90 backdrop-blur-md text-inca-gold text-xs font-bold px-3 py-1 rounded-full border border-inca-gold/30">Piso 5 • Cama Queen</span>
+                    <span class="absolute bottom-4 right-4 bg-inca-gold text-inca-dark font-extrabold px-3.5 py-1.5 rounded-xl text-sm shadow-md">S/120 <span class="text-xs font-normal">/ noche</span></span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-2xl font-bold text-inca-dark">Habitación 2 – Killa</h3>
+                            <span class="text-[10px] font-bold text-green-800 bg-green-100 px-2.5 py-1 rounded-md">Desayuno Incluido</span>
+                        </div>
+                        <p class="text-gray-600 text-xs mb-4 leading-relaxed">Suite privada cálida con smart TV, acceso digital autónomo y cama Queen reconfortante.</p>
+                        <div class="grid grid-cols-2 gap-2 text-xs text-gray-700 mb-6 bg-inca-sand/40 p-3 rounded-xl border border-inca-sand">
+                            <div class="flex items-center gap-1.5"><i data-lucide="users" class="w-3.5 h-3.5 text-inca-gold"></i> 1 - 2 Personas</div>
+                            <div class="flex items-center gap-1.5"><i data-lucide="tv" class="w-3.5 h-3.5 text-inca-gold"></i> Smart TV</div>
+                            <div class="flex items-center gap-1.5"><i data-lucide="key" class="w-3.5 h-3.5 text-inca-gold"></i> Acceso Digital</div>
+                            <div class="flex items-center gap-1.5"><i data-lucide="coffee" class="w-3.5 h-3.5 text-inca-gold"></i> Buffet Incluido</div>
+                        </div>
+                    </div>
+                    <button onclick="selectRoom('killa')" class="w-full bg-inca-earth hover:bg-inca-dark text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
+                        <span>Reservar Killa</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Habitación 3: Inti -->
+            <div class="room-card habitacion bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 flex flex-col hover:shadow-2xl transition duration-300">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&q=80&w=800" alt="Inti" class="w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 bg-inca-dark/90 backdrop-blur-md text-inca-gold text-xs font-bold px-3 py-1 rounded-full border border-inca-gold/30">Piso 5 • Matrimonial</span>
+                    <span class="absolute bottom-4 right-4 bg-inca-gold text-inca-dark font-extrabold px-3.5 py-1.5 rounded-xl text-sm shadow-md">S/120 <span class="text-xs font-normal">/ noche</span></span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-2xl font-bold text-inca-dark">Habitación 3 – Inti</h3>
+                            <span class="text-[10px] font-bold text-green-800 bg-green-100 px-2.5 py-1 rounded-md">Desayuno Incluido</span>
+                        </div>
+                        <p class="text-gray-600 text-xs mb-4 leading-relaxed">Habitación matrimonial tranquila y soleada, ideal para descanso en pareja.</p>
+                        <div class="grid grid-cols-2 gap-2 text-xs text-gray-700 mb-6 bg-inca-sand/40 p-3 rounded-xl border border-inca-sand">
+                            <div class="flex items-center gap-1.5"><i data-lucide="users" class="w-3.5 h-3.5 text-inca-gold"></i> 1 - 2 Personas</div>
+                            <div class="flex items-center gap-1.5"><i data-lucide="bed" class="w-3.5 h-3.5 text-inca-gold"></i> Cama Matrimonial</div>
+                            <div class="flex items-center gap-1.5"><i data-lucide="flame" class="w-3.5 h-3.5 text-inca-gold"></i> Azotea y Parrilla</div>
+                            <div class="flex items-center gap-1.5"><i data-lucide="coffee" class="w-3.5 h-3.5 text-inca-gold"></i> Buffet Incluido</div>
+                        </div>
+                    </div>
+                    <button onclick="selectRoom('inti')" class="w-full bg-inca-earth hover:bg-inca-dark text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
+                        <span>Reservar Inti</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Habitación 4: Qori -->
+            <div class="room-card habitacion bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 flex flex-col hover:shadow-2xl transition duration-300">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=800" alt="Qori" class="w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 bg-inca-dark/90 backdrop-blur-md text-inca-gold text-xs font-bold px-3 py-1 rounded-full border border-inca-gold/30">Piso 5 • Matrimonial</span>
+                    <span class="absolute bottom-4 right-4 bg-inca-gold text-inca-dark font-extrabold px-3.5 py-1.5 rounded-xl text-sm shadow-md">S/120 <span class="text-xs font-normal">/ noche</span></span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-2xl font-bold text-inca-dark">Habitación 4 – Qori</h3>
+                            <span class="text-[10px] font-bold text-green-800 bg-green-100 px-2.5 py-1 rounded-md">Desayuno Incluido</span>
+                        </div>
+                        <p class="text-gray-600 text-xs mb-4 leading-relaxed">Habitación acogedora con cama matrimonial, baño privado impecable y alta privacidad.</p>
+                        <div class="grid grid-cols-2 gap-2 text-xs text-gray-700 mb-6 bg-inca-sand/40 p-3 rounded-xl border border-inca-sand">
+                            <div class="flex items-center gap-1.5"><i data-lucide="users" class="w-3.5 h-3.5 text-inca-gold"></i> 1 - 2 Personas</div>
+                            <div class="flex items-center gap-1.5"><i data-lucide="wifi" class="w-3.5 h-3.5 text-inca-gold"></i> WiFi Gratis</div>
+                            <div class="flex items-center gap-1.5"><i data-lucide="bath" class="w-3.5 h-3.5 text-inca-gold"></i> Baño Privado</div>
+                            <div class="flex items-center gap-1.5"><i data-lucide="coffee" class="w-3.5 h-3.5 text-inca-gold"></i> Buffet Incluido</div>
+                        </div>
+                    </div>
+                    <button onclick="selectRoom('qori')" class="w-full bg-inca-earth hover:bg-inca-dark text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2 text-xs uppercase tracking-wider">
+                        <span>Reservar Qori</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Departamento Apu - Piso 2 -->
+            <div class="room-card departamento bg-white rounded-3xl overflow-hidden shadow-xl border-2 border-inca-gold/50 flex flex-col hover:shadow-2xl transition duration-300">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=800" alt="Departamento Apu" class="w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 bg-inca-gold text-inca-dark font-extrabold text-xs px-3.5 py-1 rounded-full uppercase tracking-wider">Piso 2 • Hasta 5 Huéspedes</span>
+                    <span class="absolute bottom-4 right-4 bg-inca-dark text-inca-gold font-extrabold px-3.5 py-1.5 rounded-xl text-sm border border-inca-gold">S/190 <span class="text-xs font-normal text-white">/ noche</span></span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-2xl font-bold text-inca-dark">Departamento Apu</h3>
+                            <span class="text-[10px] font-bold text-amber-800 bg-amber-100 px-2.5 py-1 rounded-md">Desayuno Opcional</span>
+                        </div>
+                        <p class="text-gray-600 text-xs mb-4 leading-relaxed">3 habitaciones (2 matrimoniales, 1 individual), 3 camas y 3 baños privados. Cocina full equipada.</p>
+                        <div class="grid grid-cols-2 gap-2 text-xs text-gray-700 mb-6 bg-inca-sand/40 p-3 rounded-xl border border-inca-sand">
+                            <div class="flex items-center gap-1.5"><i data-lucide="users" class="w-3.5 h-3.5 text-inca-gold"></i> Hasta 5 Personas</div>
+                            <div class="flex items-center gap-1.5"><i data-lucide="layout" class="w-3.5 h-3.5 text-inca-gold"></i> 3 Hab / 3 Camas</div>
+                            <div class="flex items-center gap-1.5"><i data-lucide="utensils" class="w-3.5 h-3.5 text-inca-gold"></i> Cocina Equipada</div>
+                            <div class="flex items-center gap-1.5"><i data-lucide="bath" class="w-3.5 h-3.5 text-inca-gold"></i> 3 Baños</div>
+                        </div>
+                    </div>
+                    <button onclick="selectRoom('apu')" class="w-full gold-gradient hover:brightness-105 text-inca-dark font-extrabold py-3 rounded-xl transition flex items-center justify-center gap-2 text-xs uppercase tracking-wider shadow-md">
+                        <span>Reservar Dpto Apu</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Departamento Sumaq - Piso 3 -->
+            <div class="room-card departamento bg-white rounded-3xl overflow-hidden shadow-xl border-2 border-inca-gold/50 flex flex-col hover:shadow-2xl transition duration-300">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800" alt="Departamento Sumaq" class="w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 bg-inca-gold text-inca-dark font-extrabold text-xs px-3.5 py-1 rounded-full uppercase tracking-wider">Piso 3 • Hasta 6 Huéspedes</span>
+                    <span class="absolute bottom-4 right-4 bg-inca-dark text-inca-gold font-extrabold px-3.5 py-1.5 rounded-xl text-sm border border-inca-gold">S/200 <span class="text-xs font-normal text-white">/ noche</span></span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-2xl font-bold text-inca-dark">Departamento Sumaq</h3>
+                            <span class="text-[10px] font-bold text-amber-800 bg-amber-100 px-2.5 py-1 rounded-md">Desayuno Opcional</span>
+                        </div>
+                        <p class="text-gray-600 text-xs mb-4 leading-relaxed">2 habitaciones amplias con 4 camas (2 matrimoniales, 2 individuales), 3 baños y cocina amoblada.</p>
+                        <div class="grid grid-cols-2 gap-2 text-xs text-gray-700 mb-6 bg-inca-sand/40 p-3 rounded-xl border border-inca-sand">
+                            <div class="flex items-center gap-1.5"><i data-lucide="users" class="w-3.5 h-3.5 text-inca-gold"></i> Hasta 6 Personas</div>
+                            <div class="flex items-center gap-1.5"><i data-lucide="layout" class="w-3.5 h-3.5 text-inca-gold"></i> 2 Hab / 4 Camas</div>
+                            <div class="flex items-center gap-1.5"><i data-lucide="utensils" class="w-3.5 h-3.5 text-inca-gold"></i> Cocina Equipada</div>
+                            <div class="flex items-center gap-1.5"><i data-lucide="bath" class="w-3.5 h-3.5 text-inca-gold"></i> 3 Baños</div>
+                        </div>
+                    </div>
+                    <button onclick="selectRoom('sumaq')" class="w-full gold-gradient hover:brightness-105 text-inca-dark font-extrabold py-3 rounded-xl transition flex items-center justify-center gap-2 text-xs uppercase tracking-wider shadow-md">
+                        <span>Reservar Dpto Sumaq</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MOTOR DE RESERVAS CON BOTÓN OFICIAL DE PAYPAL -->
+    <section id="motor-reservas" class="py-20 bg-inca-dark text-white relative bg-pattern border-y border-inca-gold/20">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-inca-gold text-xs font-bold uppercase tracking-widest">Reserva Directa Sin Comisiones</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold mt-2">Cotiza y Asegura tu Estadía</h2>
+                <p class="text-inca-sand/80 text-xs sm:text-sm mt-3">Disponibilidad en tiempo real. Pago 100% seguro con PayPal.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+                <!-- FORMULARIO -->
+                <div class="lg:col-span-7 bg-white text-inca-dark p-6 sm:p-8 rounded-3xl shadow-2xl border border-inca-gold/30">
+                    <form id="booking-calculator-form" onsubmit="handleBookingSubmit(event)">
+                        
+                        <h3 class="font-serif text-lg font-bold text-inca-earth border-b pb-3 mb-6 flex items-center justify-between">
+                            <span>1. Selección de Alojamiento y Fechas</span>
+                            <span class="text-[10px] font-sans text-inca-gold font-bold uppercase">Tarifas en Soles (S/)</span>
+                        </h3>
+
+                        <!-- UNIDAD -->
+                        <div class="mb-5">
+                            <label class="block text-xs font-bold text-inca-dark uppercase tracking-wider mb-2">Unidad Deseada *</label>
+                            <select id="calc-room" onchange="updateCalculation()" class="w-full p-3.5 border border-gray-300 rounded-xl text-xs sm:text-sm font-semibold focus:ring-2 focus:ring-inca-gold outline-none">
+                                <option value="chaska">Habitación 1 – Chaska (5° Piso, 1-2 p) - S/120/noche</option>
+                                <option value="killa">Habitación 2 – Killa (5° Piso, 1-2 p) - S/120/noche</option>
+                                <option value="inti">Habitación 3 – Inti (5° Piso, 1-2 p) - S/120/noche</option>
+                                <option value="qori">Habitación 4 – Qori (5° Piso, 1-2 p) - S/120/noche</option>
+                                <option value="apu">Departamento Apu (Piso 2, Máx 5 p) - S/190/noche</option>
+                                <option value="sumaq">Departamento Sumaq (Piso 3, Máx 6 p) - S/200/noche</option>
+                            </select>
+                        </div>
+
+                        <!-- FECHAS -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
+                            <div>
+                                <label class="block text-xs font-bold text-inca-dark uppercase tracking-wider mb-2">Llegada *</label>
+                                <input type="date" id="calc-checkin" onchange="updateCalculation()" class="w-full p-3 border border-gray-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-inca-gold outline-none" required>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-inca-dark uppercase tracking-wider mb-2">Salida *</label>
+                                <input type="date" id="calc-checkout" onchange="updateCalculation()" class="w-full p-3 border border-gray-300 rounded-xl text-xs font-medium focus:ring-2 focus:ring-inca-gold outline-none" required>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-inca-dark uppercase tracking-wider mb-2">Huéspedes *</label>
+                                <input type="number" id="calc-guests" min="1" max="6" value="2" onchange="updateCalculation()" class="w-full p-3 border border-gray-300 rounded-xl text-xs font-bold focus:ring-2 focus:ring-inca-gold outline-none" required>
+                                <span class="text-[10px] text-gray-500 font-medium">Incluye niños</span>
+                            </div>
+                        </div>
+
+                        <!-- DESAYUNO OPIONAL DEPARTAMENTOS -->
+                        <div id="breakfast-option-box" class="hidden mb-6 p-4 bg-amber-50/80 rounded-2xl border border-amber-200">
+                            <label class="flex items-start gap-3 cursor-pointer">
+                                <input type="checkbox" id="calc-breakfast" onchange="updateCalculation()" class="w-4 h-4 mt-0.5 text-inca-gold rounded border-gray-300 focus:ring-inca-gold">
+                                <div>
+                                    <span class="font-bold text-xs text-amber-900 block">Agregar Desayuno Buffet Opcional</span>
+                                    <span class="text-[11px] text-amber-700">S/15.00 por persona por día de estadía.</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <h3 class="font-serif text-lg font-bold text-inca-earth border-b pb-3 mb-6 pt-2">2. Datos del Huésped Principal</h3>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Nombre Completo *</label>
+                                <input type="text" id="guest-name" placeholder="Ej. Carlos Mendoza" class="w-full p-3 border border-gray-300 rounded-xl text-xs focus:ring-2 focus:ring-inca-gold outline-none" required>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Correo Electrónico *</label>
+                                <input type="email" id="guest-email" placeholder="carlos@ejemplo.com" class="w-full p-3 border border-gray-300 rounded-xl text-xs focus:ring-2 focus:ring-inca-gold outline-none" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">WhatsApp / Teléfono *</label>
+                            <input type="tel" id="guest-phone" placeholder="+51 900 000 000" class="w-full p-3 border border-gray-300 rounded-xl text-xs focus:ring-2 focus:ring-inca-gold outline-none" required>
+                        </div>
+
+                        <!-- ACEPTE TERMINOS -->
+                        <div class="mb-6 p-4 bg-gray-50 rounded-xl border border-gray-200 text-xs text-gray-600">
+                            <label class="flex items-start gap-2.5 cursor-pointer">
+                                <input type="checkbox" id="accept-terms" class="w-4 h-4 mt-0.5 text-inca-gold rounded border-gray-300 focus:ring-inca-gold" required>
+                                <span>Acepto las <a href="#normas" class="text-inca-earth font-bold underline">Normas del Alojamiento</a> (Prohibido fumar, no fiestas, aforo estricto, política de daños y cancelación previa de 15 días).</span>
+                            </label>
+                        </div>
+
+                        <!-- BOTÓN OFICIAL DE PAYPAL INTEGRADO -->
+                        <div class="mt-6">
+                            <div id="paypal-button-container"></div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- RESUMEN EN TIEMPO REAL -->
+                <div class="lg:col-span-5 bg-inca-earth/95 backdrop-blur-md text-white p-6 sm:p-8 rounded-3xl border border-inca-gold/30 shadow-2xl sticky top-28">
+                    <h3 class="font-serif text-xl font-bold text-inca-gold mb-6 border-b border-inca-gold/20 pb-4 flex items-center justify-between">
+                        <span>Resumen de Cotización</span>
+                        <i data-lucide="receipt" class="w-5 h-5 text-inca-gold"></i>
+                    </h3>
+
+                    <div class="space-y-3.5 text-xs font-light">
+                        <div class="flex justify-between pb-2.5 border-b border-white/10">
+                            <span class="text-inca-sand/70">Alojamiento:</span>
+                            <span id="summary-room-name" class="font-bold text-white text-right">Habitación 1 – Chaska</span>
+                        </div>
+
+                        <div class="flex justify-between pb-2.5 border-b border-white/10">
+                            <span class="text-inca-sand/70">Noches de Estadía:</span>
+                            <span id="summary-nights" class="font-bold text-white">0 noches</span>
+                        </div>
+
+                        <div class="flex justify-between pb-2.5 border-b border-white/10">
+                            <span class="text-inca-sand/70">Huéspedes Registrados:</span>
+                            <span id="summary-guests" class="font-bold text-white">2 personas</span>
+                        </div>
+
+                        <div class="flex justify-between pb-2.5 border-b border-white/10">
+                            <span class="text-inca-sand/70">Precio Base Noche:</span>
+                            <span id="summary-rate" class="font-bold text-white">S/120.00</span>
+                        </div>
+
+                        <div class="flex justify-between pb-2.5 border-b border-white/10">
+                            <span class="text-inca-sand/70">Subtotal Alojamiento:</span>
+                            <span id="summary-subtotal" class="font-bold text-white">S/0.00</span>
+                        </div>
+
+                        <div id="summary-breakfast-row" class="flex justify-between pb-2.5 border-b border-white/10">
+                            <span class="text-inca-sand/70">Servicio Desayuno:</span>
+                            <span id="summary-breakfast" class="font-bold text-green-400">Incluido (S/0.00)</span>
+                        </div>
+
+                        <div class="pt-4 flex justify-between items-end">
+                            <div>
+                                <span class="text-[10px] uppercase text-inca-gold tracking-widest font-bold block">Total a Pagar (100%)</span>
+                                <span class="text-[9px] text-inca-sand/60">Importe final en Soles</span>
+                            </div>
+                            <span id="summary-total" class="text-3xl font-extrabold text-inca-gold">S/0.00</span>
+                        </div>
+                    </div>
+
+                    <!-- ALERTAS DE ERRORES -->
+                    <div id="stay-warning" class="mt-6 p-3 bg-red-950/80 border border-red-500/80 rounded-xl text-xs text-red-200 hidden flex items-center gap-2">
+                        <i data-lucide="alert-triangle" class="w-4 h-4 flex-shrink-0 text-red-400"></i>
+                        <span>Estadía mínima obligatoria: 2 noches.</span>
+                    </div>
+
+                    <div id="capacity-warning" class="mt-6 p-3 bg-red-950/80 border border-red-500/80 rounded-xl text-xs text-red-200 hidden flex items-center gap-2">
+                        <i data-lucide="users" class="w-4 h-4 flex-shrink-0 text-red-400"></i>
+                        <span id="capacity-warning-text">Capacidad superada.</span>
+                    </div>
+
+                    <div id="ical-conflict-warning" class="mt-6 p-3 bg-red-950/90 border-2 border-red-500 rounded-xl text-xs text-red-200 hidden flex items-center gap-2">
+                        <i data-lucide="calendar-x" class="w-5 h-5 flex-shrink-0 text-red-400"></i>
+                        <span id="ical-warning-text">Fechas ocupadas en Airbnb/Booking. Por favor selecciona otras fechas.</span>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-inca-gold/20 flex items-center justify-between text-[11px] text-inca-sand/70">
+                        <span class="flex items-center gap-1"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-inca-gold"></i> Sin Choque de Reservas</span>
+                        <span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-inca-gold"></i> PayPal Integrado</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- NORMAS DE LA PROPIEDAD -->
+    <section id="normas" class="py-20 bg-inca-sand/20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-inca-gold text-xs font-bold uppercase tracking-widest">Reglamento Interno</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-inca-dark mt-2">Normas del Alojamiento</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                    <div class="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center text-red-600 mb-4">
+                        <i data-lucide="cigarette-off" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-serif text-base font-bold text-inca-dark mb-1">Prohibido Fumar</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">No está permitido fumar dentro de las habitaciones, departamentos ni pasillos interiores.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                    <div class="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 mb-4">
+                        <i data-lucide="party-popper" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-serif text-base font-bold text-inca-dark mb-1">No Fiestas ni Eventos</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">Prohibido organizar fiestas o reuniones que alteren la tranquilidad del lugar.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                    <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-4">
+                        <i data-lucide="users-round" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-serif text-base font-bold text-inca-dark mb-1">Aforo Respetado</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">No se permite superar la capacidad máxima contratada (niños incluidos).</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                    <div class="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 mb-4">
+                        <i data-lucide="calendar-x" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-serif text-base font-bold text-inca-dark mb-1">Cancelación a 15 Días</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">Solicitud de cancelación con un mínimo de 15 días de anticipación.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIÓN -->
+    <section id="ubicacion" class="py-20 px-4 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div class="lg:col-span-5">
+                <span class="text-inca-gold text-xs font-bold uppercase tracking-widest">Ubicación Privilegiada</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-inca-dark mt-2 mb-6">Cerca de Todo en Cusco</h2>
+                
+                <div class="space-y-4 text-xs text-gray-600 mb-8">
+                    <div class="flex items-start gap-3">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-inca-gold flex-shrink-0 mt-0.5"></i>
+                        <span>Ubicado en zona tranquila y segura, con rápido acceso al Centro Histórico.</span>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i data-lucide="key" class="w-4 h-4 text-inca-gold flex-shrink-0 mt-0.5"></i>
+                        <span>Accesos digitales sin llaves físicas para mayor comodidad y autonomía.</span>
+                    </div>
+                </div>
+
+                <div class="bg-inca-sand/50 p-6 rounded-2xl border border-inca-gold/30">
+                    <h4 class="font-bold text-inca-earth mb-2 text-xs uppercase tracking-wider">Contacto Directo</h4>
+                    <p class="text-xs text-gray-600 mb-4">Escríbenos por WhatsApp para consultas o ayuda inmediata.</p>
+                    <a href="https://wa.me/51967054134" target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition shadow-md">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        <span>WhatsApp Directo (+51 967 054 134)</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 h-[420px] rounded-3xl overflow-hidden shadow-2xl border border-inca-gold/30">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31034.408796851212!2d-71.9793574!3d-13.5167232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x916dd6731006548b%3A0x2f9543e0618035b8!2sCusco%2C%20Peru!5e0!3m2!1ses!2spe!4v1700000000000!5m2!1ses!2spe" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHATSAPP FLOTANTE -->
+    <a href="https://wa.me/51967054134?text=Hola,%20quisiera%20consultar%20disponibilidad%20en%20Sue%C3%B1os%20Andinos%20Cusco." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-2xl transition hover:scale-110 flex items-center justify-center border-2 border-white">
+        <i data-lucide="message-circle" class="w-6 h-6"></i>
+    </a>
+
+    <!-- FOOTER -->
+    <footer class="bg-inca-dark text-white border-t border-inca-gold/20 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-white/10">
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 rounded-full bg-inca-gold/20 border border-inca-gold flex items-center justify-center">
+                        <i data-lucide="mountain" class="w-4 h-4 text-inca-gold"></i>
+                    </div>
+                    <span class="font-serif text-lg font-bold text-white">SUEÑOS ANDINOS CUSCO</span>
+                </div>
+                <p class="text-xs text-inca-sand/70 leading-relaxed mb-4">6 alojamientos independientes en Cusco con servicio boutique y la máxima privacidad.</p>
+                <p class="text-xs font-semibold text-inca-gold">https://sueñosandinoscusco.com</p>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-base font-bold text-inca-gold mb-4">Atención y Reservas</h4>
+                <ul class="space-y-2.5 text-xs text-inca-sand/80">
+                    <li class="flex items-center gap-2">
+                        <i data-lucide="mail" class="w-3.5 h-3.5 text-inca-gold"></i>
+                        <a href="mailto:suenosandinoscusco@gmail.com" class="hover:underline">suenosandinoscusco@gmail.com</a>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i data-lucide="phone" class="w-3.5 h-3.5 text-inca-gold"></i>
+                        <a href="https://wa.me/51967054134" target="_blank" class="hover:underline">+51 967 054 134</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-base font-bold text-inca-gold mb-4">Pagos Aceptados</h4>
+                <p class="text-xs text-inca-sand/70 mb-3">Cobro del 100% garantizado con PayPal o Tarjeta de Crédito/Débito.</p>
+                <div class="inline-block bg-white/10 px-3 py-1.5 rounded-lg border border-white/20 text-xs font-bold text-inca-gold">PayPal 100% Securitized</div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 pt-8 text-center text-xs text-inca-sand/50">
+            <p>© 2026 Sueños Andinos Cusco. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT: LÓGICA DE NEGOCIO Y BOTÓN PAYPAL REAL -->
+    <script>
+        const ROOM_DATA = {
+            'chaska': { name: 'Habitación 1 – Chaska', price: 120, maxCapacity: 2, type: 'habitacion', breakfastIncluded: true },
+            'killa': { name: 'Habitación 2 – Killa', price: 120, maxCapacity: 2, type: 'habitacion', breakfastIncluded: true },
+            'inti': { name: 'Habitación 3 – Inti', price: 120, maxCapacity: 2, type: 'habitacion', breakfastIncluded: true },
+            'qori': { name: 'Habitación 4 – Qori', price: 120, maxCapacity: 2, type: 'habitacion', breakfastIncluded: true },
+            'apu': { name: 'Departamento Apu (Piso 2)', price: 190, maxCapacity: 5, type: 'departamento', breakfastIncluded: false },
+            'sumaq': { name: 'Departamento Sumaq (Piso 3)', price: 200, maxCapacity: 6, type: 'departamento', breakfastIncluded: false }
+        };
+
+        // ENLACE ICAL DE AIRBNB AUTOMATIZADO
+        const AIRBNB_ICAL_URL = 'https://www.airbnb.com.pe/calendar/ical/1795927824039124892.ics?t=bd40a0245f8447e0b07fb97c0731b81b';
+
+        // Objeto global de fechas bloqueadas por unidad
+        let BLOCKED_DATES = {
+            'chaska': [],
+            'killa': [],
+            'inti': [],
+            'qori': [],
+            'apu': [],
+            'sumaq': []
+        };
+
+        let currentTotalSoles = 0;
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            lucide.createIcons();
+            
+            // Cargar fechas bloqueadas desde Airbnb antes de inicializar la web
+            await loadAirbnbCalendar();
+
+            const today = new Date();
+            const checkin = new Date(today);
+            checkin.setDate(today.getDate() + 1);
+            const checkout = new Date(checkin);
+            checkout.setDate(checkin.getDate() + 2);
+
+            const cInStr = checkin.toISOString().split('T')[0];
+            const cOutStr = checkout.toISOString().split('T')[0];
+
+            document.getElementById('calc-checkin').value = cInStr;
+            document.getElementById('calc-checkout').value = cOutStr;
+            document.getElementById('hero-checkin').value = cInStr;
+            document.getElementById('hero-checkout').value = cOutStr;
+
+            updateCalculation();
+            renderPayPalButton();
+        });
+
+        // Función para leer y parsear el archivo .ics de Airbnb mediante un proxy CORS gratuito
+        async function loadAirbnbCalendar() {
+            if (!AIRBNB_ICAL_URL || AIRBNB_ICAL_URL.includes('PEGA_AQUÍ')) {
+                console.warn('Falta configurar el enlace iCal de Airbnb.');
+                return;
+            }
+
+            try {
+                const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(AIRBNB_ICAL_URL)}`;
+                const response = await fetch(proxyUrl);
+                const icsText = await response.text();
+
+                const dates = parseICalDates(icsText);
+                BLOCKED_DATES['chaska'] = dates;
+                
+                console.log('Fechas bloqueadas sincronizadas desde Airbnb:', dates);
+            } catch (error) {
+                console.error('Error al sincronizar el calendario de Airbnb:', error);
+            }
+        }
+
+        // Extractor de fechas del formato iCal (.ics)
+        function parseICalDates(icsData) {
+            const blocked = [];
+            const lines = icsData.split(/\r\n|\n|\r/);
+            let startDate = null;
+            let endDate = null;
+
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                if (line.startsWith('DTSTART')) {
+                    startDate = extractDate(line);
+                } else if (line.startsWith('DTEND')) {
+                    endDate = extractDate(line);
+                }
+
+                if (startDate && endDate) {
+                    let cur = new Date(startDate);
+                    const end = new Date(endDate);
+                    while (cur < end) {
+                        blocked.push(cur.toISOString().split('T')[0]);
+                        cur.setDate(cur.getDate() + 1);
+                    }
+                    startDate = null;
+                    endDate = null;
+                }
+            }
+            return [...new Set(blocked)];
+        }
+
+        function extractDate(line) {
+            const parts = line.split(':');
+            if (parts.length < 2) return null;
+            let val = parts[1].trim();
+            if (val.length >= 8) {
+                const y = val.substring(0, 4);
+                const m = val.substring(4, 6);
+                const d = val.substring(6, 8);
+                return `${y}-${m}-${d}`;
+            }
+            return null;
+        }
+
+        function isRangeBlocked(roomId, startDateStr, endDateStr) {
+            const blocked = BLOCKED_DATES[roomId] || [];
+            if (blocked.length === 0) return false;
+
+            let cur = new Date(startDateStr);
+            const end = new Date(endDateStr);
+
+            while (cur < end) {
+                const curStr = cur.toISOString().split('T')[0];
+                if (blocked.includes(curStr)) {
+                    return true;
+                }
+                cur.setDate(cur.getDate() + 1);
+            }
+            return false;
+        }
+
+        function filterRooms(cat) {
+            const cards = document.querySelectorAll('.room-card');
+            const btns = document.querySelectorAll('.room-filter-btn');
+
+            btns.forEach(b => {
+                b.classList.remove('gold-gradient', 'text-inca-dark');
+                b.classList.add('bg-white', 'text-inca-dark');
+            });
+
+            event.target.classList.remove('bg-white');
+            event.target.classList.add('gold-gradient', 'text-inca-dark');
+
+            cards.forEach(card => {
+                if (cat === 'all' || card.classList.contains(cat)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function selectRoom(roomId) {
+            document.getElementById('calc-room').value = roomId;
+            updateCalculation();
+            document.getElementById('motor-reservas').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function updateCalculation() {
+            const roomId = document.getElementById('calc-room').value;
+            const cInVal = document.getElementById('calc-checkin').value;
+            const cOutVal = document.getElementById('calc-checkout').value;
+            const guests = parseInt(document.getElementById('calc-guests').value) || 1;
+            const addBreakfast = document.getElementById('calc-breakfast').checked;
+
+            const room = ROOM_DATA[roomId];
+            const warningStay = document.getElementById('stay-warning');
+            const warningCap = document.getElementById('capacity-warning');
+            const warningICal = document.getElementById('ical-conflict-warning');
+            const breakfastBox = document.getElementById('breakfast-option-box');
+
+            if (room.type === 'departamento') {
+                breakfastBox.classList.remove('hidden');
+            } else {
+                breakfastBox.classList.add('hidden');
+            }
+
+            let nights = 0;
+            if (cInVal && cOutVal) {
+                const d1 = new Date(cInVal);
+                const d2 = new Date(cOutVal);
+                nights = Math.ceil((d2 - d1) / (1000 * 60 * 60 * 24));
+            }
+
+            let isValid = true;
+
+            if (nights < 2) {
+                warningStay.classList.remove('hidden');
+                isValid = false;
+            } else {
+                warningStay.classList.add('hidden');
+            }
+
+            if (guests > room.maxCapacity) {
+                document.getElementById('capacity-warning-text').innerText = `${room.name} tiene un aforo máximo de ${room.maxCapacity} personas.`;
+                warningCap.classList.remove('hidden');
+                isValid = false;
+            } else {
+                warningCap.classList.add('hidden');
+            }
+
+            if (cInVal && cOutVal && isRangeBlocked(roomId, cInVal, cOutVal)) {
+                warningICal.classList.remove('hidden');
+                isValid = false;
+            } else {
+                warningICal.classList.add('hidden');
+            }
+
+            const validNights = nights > 0 ? nights : 0;
+            const roomSubtotal = room.price * validNights;
+
+            let breakfastTotal = 0;
+            if (room.breakfastIncluded) {
+                document.getElementById('summary-breakfast-row').style.display = 'flex';
+                document.getElementById('summary-breakfast').innerText = 'Incluido (S/0.00)';
+                document.getElementById('summary-breakfast').className = 'font-bold text-green-400';
+            } else if (addBreakfast) {
+                breakfastTotal = 15 * guests * validNights;
+                document.getElementById('summary-breakfast-row').style.display = 'flex';
+                document.getElementById('summary-breakfast').innerText = `S/${breakfastTotal.toFixed(2)}`;
+                document.getElementById('summary-breakfast').className = 'font-bold text-white';
+            } else {
+                document.getElementById('summary-breakfast-row').style.display = 'none';
+            }
+
+            currentTotalSoles = roomSubtotal + breakfastTotal;
+
+            document.getElementById('summary-room-name').innerText = room.name;
+            document.getElementById('summary-nights').innerText = `${validNights} noches`;
+            document.getElementById('summary-guests').innerText = `${guests} personas`;
+            document.getElementById('summary-rate').innerText = `S/${room.price}.00`;
+            document.getElementById('summary-subtotal').innerText = `S/${roomSubtotal.toFixed(2)}`;
+            document.getElementById('summary-total').innerText = `S/${currentTotalSoles.toFixed(2)}`;
+        }
+
+        function renderPayPalButton() {
+            if (typeof paypal !== 'undefined') {
+                paypal.Buttons({
+                    style: {
+                        layout: 'vertical',
+                        color:  'gold',
+                        shape:  'rect',
+                        label:  'pay'
+                    },
+                    createOrder: function(data, actions) {
+                        const name = document.getElementById('guest-name').value;
+                        const email = document.getElementById('guest-email').value;
+                        const terms = document.getElementById('accept-terms').checked;
+
+                        if (!name || !email) {
+                            alert('Por favor ingresa tu Nombre y Correo electrónico antes de pagar.');
+                            return false;
+                        }
+                        if (!terms) {
+                            alert('Debes aceptar las Normas del Alojamiento para proceder.');
+                            return false;
+                        }
+
+                        const totalUSD = (currentTotalSoles / 3.75).toFixed(2);
+
+                        return actions.order.create({
+                            purchase_units: [{
+                                amount: {
+                                    value: totalUSD
+                                },
+                                description: 'Reserva en Sueños Andinos Cusco'
+                            }]
+                        });
+                    },
+                    onApprove: function(data, actions) {
+                        return actions.order.capture().then(function(details) {
+                            alert('¡Pago completado con éxito por ' + details.payer.name.given_name + '! Se enviará la confirmación a suenosandinoscusco@gmail.com');
+                        });
+                    }
+                }).render('#paypal-button-container');
+            }
+        }
+
+        document.getElementById('hero-search-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById('calc-checkin').value = document.getElementById('hero-checkin').value;
+            document.getElementById('calc-checkout').value = document.getElementById('hero-checkout').value;
+            document.getElementById('calc-guests').value = document.getElementById('hero-guests').value;
+            updateCalculation();
+            document.getElementById('motor-reservas').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
