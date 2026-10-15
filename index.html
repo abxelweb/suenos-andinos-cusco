@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- SDK OFICIAL DE PAYPAL (CON TU CLIENT ID) -->
+    <!-- SDK OFICIAL DE PAYPAL -->
     <script src="https://www.paypal.com/sdk/js?client-id=AQdTSY0JfULxKCi53oOFAcWp2lEWBxZ2C-3-8m4S_aX4j1j9m&currency=USD"></script>
 
     <script>
@@ -498,7 +498,7 @@
 
                     <div id="ical-conflict-warning" class="mt-6 p-3 bg-red-950/90 border-2 border-red-500 rounded-xl text-xs text-red-200 hidden flex items-center gap-2">
                         <i data-lucide="calendar-x" class="w-5 h-5 flex-shrink-0 text-red-400"></i>
-                        <span id="ical-warning-text">Fechas ocupadas en Airbnb/Booking. Por favor selecciona otras fechas.</span>
+                        <span id="ical-warning-text">Fechas ocupadas en Airbnb o bloqueadas manualmente. Por favor selecciona otras fechas.</span>
                     </div>
 
                     <div class="mt-8 pt-6 border-t border-inca-gold/20 flex items-center justify-between text-[11px] text-inca-sand/70">
@@ -634,9 +634,13 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT: LÓGICA DE NEGOCIO Y BOTÓN PAYPAL REAL -->
+    <!-- JAVASCRIPT: LÓGICA DE NEGOCIO, SUPABASE Y BOTÓN PAYPAL REAL -->
     <script>
-        const ROOM_DATA = {
+        const SUPABASE_URL = "https://vsnandukvuykrhqzdmsq.supabase.co";
+        const SUPABASE_KEY = "sb_publishable_2sXTK3jkw5zomUxxDEs_aw_6ovzdl1Y";
+
+        const ROOM_DATA = 
+        {
             'chaska': { name: 'Habitación 1 – Chaska', price: 120, maxCapacity: 2, type: 'habitacion', breakfastIncluded: true },
             'killa': { name: 'Habitación 2 – Killa', price: 120, maxCapacity: 2, type: 'habitacion', breakfastIncluded: true },
             'inti': { name: 'Habitación 3 – Inti', price: 120, maxCapacity: 2, type: 'habitacion', breakfastIncluded: true },
@@ -644,27 +648,22 @@
             'apu': { name: 'Departamento Apu (Piso 2)', price: 190, maxCapacity: 5, type: 'departamento', breakfastIncluded: false },
             'sumaq': { name: 'Departamento Sumaq (Piso 3)', price: 200, maxCapacity: 6, type: 'departamento', breakfastIncluded: false }
         };
-
-        // ENLACE ICAL DE AIRBNB AUTOMATIZADO
+        
         const AIRBNB_ICAL_URL = 'https://www.airbnb.com.pe/calendar/ical/1795927824039124892.ics?t=bd40a0245f8447e0b07fb97c0731b81b';
-
-        // Objeto global de fechas bloqueadas por unidad
-        let BLOCKED_DATES = {
-            'chaska': [],
-            'killa': [],
-            'inti': [],
-            'qori': [],
-            'apu': [],
-            'sumaq': []
+        let BLOCKED_DATES = 
+        {
+            'chaska': [], 'killa': [], 'inti': [], 'qori': [], 'apu': [], 'sumaq': []
         };
 
+        let SUPABASE_BLOCKED_RANGES = [];
         let currentTotalSoles = 0;
 
-        window.addEventListener('DOMContentLoaded', async () => {
+        window.addEventListener('DOMContentLoaded', async () => 
+        {
             lucide.createIcons();
-            
-            // Cargar fechas bloqueadas desde Airbnb antes de inicializar la web
+
             await loadAirbnbCalendar();
+            await loadSupabaseBlockedDates();
 
             const today = new Date();
             const checkin = new Date(today);
@@ -684,13 +683,24 @@
             renderPayPalButton();
         });
 
-        // Función para leer y parsear el archivo .ics de Airbnb mediante un proxy CORS gratuito
-        async function loadAirbnbCalendar() {
-            if (!AIRBNB_ICAL_URL || AIRBNB_ICAL_URL.includes('PEGA_AQUÍ')) {
-                console.warn('Falta configurar el enlace iCal de Airbnb.');
-                return;
+        async function loadSupabaseBlockedDates() {
+            try {
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/blocked_dates?select=*`, {
+                    headers: {
+                        'apikey': SUPABASE_KEY,
+                        'Authorization': `Bearer ${SUPABASE_KEY}`
+                    }
+                });
+                if (response.ok) {
+                    SUPABASE_BLOCKED_RANGES = await response.json();
+                }
+            } catch (err) {
+                console.error("Error al cargar Supabase:", err);
             }
+        }
 
+        async function loadAirbnbCalendar() {
+            if (!AIRBNB_ICAL_URL || AIRBNB_ICAL_URL.includes('PEGA_AQUÍ')) return;
             try {
                 const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(AIRBNB_ICAL_URL)}`;
                 const response = await fetch(proxyUrl);
@@ -698,15 +708,13 @@
 
                 const dates = parseICalDates(icsText);
                 BLOCKED_DATES['chaska'] = dates;
-                
-                console.log('Fechas bloqueadas sincronizadas desde Airbnb:', dates);
-            } catch (error) {
-                console.error('Error al sincronizar el calendario de Airbnb:', error);
+            } 
+            catch (error) {
+                console.error('Error al sincronizar Airbnb:', error);
             }
         }
 
-        // Extractor de fechas del formato iCal (.ics)
-        function parseICalDates(icsData) {
+        async function parseICalDates(icsData) {
             const blocked = [];
             const lines = icsData.split(/\r\n|\n|\r/);
             let startDate = null;
@@ -714,11 +722,8 @@
 
             for (let i = 0; i < lines.length; i++) {
                 const line = lines[i];
-                if (line.startsWith('DTSTART')) {
-                    startDate = extractDate(line);
-                } else if (line.startsWith('DTEND')) {
-                    endDate = extractDate(line);
-                }
+                if (line.startsWith('DTSTART')) startDate = extractDate(line);
+                else if (line.startsWith('DTEND')) endDate = extractDate(line);
 
                 if (startDate && endDate) {
                     let cur = new Date(startDate);
@@ -739,29 +744,32 @@
             if (parts.length < 2) return null;
             let val = parts[1].trim();
             if (val.length >= 8) {
-                const y = val.substring(0, 4);
-                const m = val.substring(4, 6);
-                const d = val.substring(6, 8);
-                return `${y}-${m}-${d}`;
+                return `${val.substring(0, 4)}-${val.substring(4, 6)}-${val.substring(6, 8)}`;
             }
             return null;
         }
 
-        function isRangeBlocked(roomId, startDateStr, endDateStr) {
-            const blocked = BLOCKED_DATES[roomId] || [];
-            if (blocked.length === 0) return false;
-
+        async function isRangeBlocked(roomId, startDateStr, endDateStr) 
+        { const blocked = BLOCKED_DATES[roomId] || [];
             let cur = new Date(startDateStr);
             const end = new Date(endDateStr);
 
             while (cur < end) {
                 const curStr = cur.toISOString().split('T')[0];
-                if (blocked.includes(curStr)) {
-                    return true;
-                }
+                if (blocked.includes(curStr)) return true;
                 cur.setDate(cur.getDate() + 1);
             }
-            return false;
+
+            await loadSupabaseBlockedDates();
+            const reqStart = new Date(startDateStr);
+            const reqEnd = new Date(endDateStr);
+
+            return SUPABASE_BLOCKED_RANGES.some(b => {
+                if (b.unit !== roomId) return false;
+                const bStart = new Date(b.start_date);
+                const bEnd = new Date(b.end_date);
+                return reqStart < bEnd && reqEnd > bStart;
+            });
         }
 
         function filterRooms(cat) {
@@ -791,7 +799,7 @@
             document.getElementById('motor-reservas').scrollIntoView({ behavior: 'smooth' });
         }
 
-        function updateCalculation() {
+        async function updateCalculation() {
             const roomId = document.getElementById('calc-room').value;
             const cInVal = document.getElementById('calc-checkin').value;
             const cOutVal = document.getElementById('calc-checkout').value;
@@ -816,28 +824,27 @@
                 const d2 = new Date(cOutVal);
                 nights = Math.ceil((d2 - d1) / (1000 * 60 * 60 * 24));
             }
-
-            let isValid = true;
-
-            if (nights < 2) {
+            if (nights < 2) 
+            {
                 warningStay.classList.remove('hidden');
-                isValid = false;
-            } else {
+            } 
+            else {
                 warningStay.classList.add('hidden');
             }
 
             if (guests > room.maxCapacity) {
                 document.getElementById('capacity-warning-text').innerText = `${room.name} tiene un aforo máximo de ${room.maxCapacity} personas.`;
                 warningCap.classList.remove('hidden');
-                isValid = false;
-            } else {
+            } 
+            else {
                 warningCap.classList.add('hidden');
             }
 
-            if (cInVal && cOutVal && isRangeBlocked(roomId, cInVal, cOutVal)) {
+            const blockedConflict = cInVal && cOutVal ? await isRangeBlocked(roomId, cInVal, cOutVal) : false;
+            if (blockedConflict) {
                 warningICal.classList.remove('hidden');
-                isValid = false;
-            } else {
+            } 
+            else {
                 warningICal.classList.add('hidden');
             }
 
@@ -871,12 +878,7 @@
         function renderPayPalButton() {
             if (typeof paypal !== 'undefined') {
                 paypal.Buttons({
-                    style: {
-                        layout: 'vertical',
-                        color:  'gold',
-                        shape:  'rect',
-                        label:  'pay'
-                    },
+                    style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay' },
                     createOrder: function(data, actions) {
                         const name = document.getElementById('guest-name').value;
                         const email = document.getElementById('guest-email').value;
@@ -895,16 +897,35 @@
 
                         return actions.order.create({
                             purchase_units: [{
-                                amount: {
-                                    value: totalUSD
-                                },
+                                amount: { value: totalUSD },
                                 description: 'Reserva en Sueños Andinos Cusco'
                             }]
                         });
                     },
                     onApprove: function(data, actions) {
-                        return actions.order.capture().then(function(details) {
-                            alert('¡Pago completado con éxito por ' + details.payer.name.given_name + '! Se enviará la confirmación a suenosandinoscusco@gmail.com');
+                        return actions.order.capture().then(async function(details) {
+                            const roomId = document.getElementById('calc-room').value;
+                            const cInVal = document.getElementById('calc-checkin').value;
+                            const cOutVal = document.getElementById('calc-checkout').value;
+
+                            await fetch(`${SUPABASE_URL}/rest/v1/blocked_dates`, {
+                                method: 'POST',
+                                headers: {
+                                    'apikey': SUPABASE_KEY,
+                                    'Authorization': `Bearer ${SUPABASE_KEY}`,
+                                    'Content-Type': 'application/json',
+                                    'Prefer': 'return=minimal'
+                                },
+                                body: JSON.stringify({
+                                    unit: roomId,
+                                    start_date: cInVal,
+                                    end_date: cOutVal,
+                                    source: 'paypal'
+                                })
+                            });
+
+                            alert('¡Pago completado con éxito por ' + details.payer.name.given_name + '! Tu reserva y bloqueo de fechas se han registrado.');
+                            updateCalculation();
                         });
                     }
                 }).render('#paypal-button-container');
