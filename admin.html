@@ -19,14 +19,14 @@
         <h2>Panel de Control - Bloqueo Manual</h2>
         <p>Bloquea fechas al instante para evitar overbookings.</p>
         
-        <label for="unit">Unidad / Habitación:</label>
-        <select id="unit">
+        <label for="block-unit">Unidad / Habitación:</label>
+        <select id="block-unit">
             <option value="chaska">Habitación 1 - Chaska</option>
             <option value="killa">Habitación 2 - Killa</option>
             <option value="inti">Habitación 3 - Inti</option>
             <option value="qori">Habitación 4 - Qori</option>
-            <option value="apu">Habitación 5 - Apu</option>
-            <option value="sumaq">Habitación 6 - Sumaq</option>
+            <option value="apu">Departamento Apu</option>
+            <option value="sumaq">Departamento Sumaq</option>
         </select>
 
         <label for="startDate">Fecha de Inicio (Check-in):</label>
@@ -44,7 +44,7 @@
         const SUPABASE_KEY = "sb_publishable_2sXTK3jkw5zomUxxDEs_aw_6ovzdl1Y";
 
         async function bloquearFechas() {
-            const unit = document.getElementById('unit').value;
+            const unit = document.getElementById('block-unit').value;
             const start_date = document.getElementById('startDate').value;
             const end_date = document.getElementById('endDate').value;
             const msg = document.getElementById('msg');
